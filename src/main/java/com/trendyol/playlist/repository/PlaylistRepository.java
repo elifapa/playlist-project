@@ -8,6 +8,8 @@ import com.couchbase.client.java.kv.GetResult;
 import com.couchbase.client.java.query.QueryOptions;
 import com.couchbase.client.java.query.QueryResult;
 import com.trendyol.playlist.domain.Playlist;
+import com.trendyol.playlist.exception.NullParameterExpection;
+import com.trendyol.playlist.exception.PlaylistNotCreatedException;
 import org.springframework.stereotype.Repository;
 
 
@@ -25,10 +27,15 @@ public class PlaylistRepository {
         this.playlistCollection = playlistCollection;
     }
 
-    public void insert(Playlist playlist) {
-        playlistCollection.insert(playlist.getId(), playlist);
-    }
+    public void insert(Playlist playlist) throws PlaylistNotCreatedException, NullParameterExpection {
+        if (playlist==null) { throw new NullParameterExpection("Playlist detail is missing."); }
 
+        try {
+            playlistCollection.insert(playlist.getId(), playlist);
+        }catch (Exception e){
+            throw new PlaylistNotCreatedException(e.getMessage());
+        }
+    }
     public void update(Playlist playlist) { playlistCollection.replace(playlist.getId(), playlist); }
 
     public void delete(String id) {

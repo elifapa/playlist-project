@@ -1,13 +1,13 @@
-package com.trendyol.toyrobot;
+package com.trendyol.playlist;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class ToyRobotApplication {
+public class PlaylistApplication {
 
     public static void main(String[] args) {
-        SpringApplication.run(ToyRobotApplication.class, args);
+        SpringApplication.run(PlaylistApplication.class, args);
     }
 
 }

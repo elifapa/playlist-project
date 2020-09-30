@@ -1,4 +1,4 @@
-package com.trendyol.toyrobot.controller;
+package com.trendyol.playlist.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;

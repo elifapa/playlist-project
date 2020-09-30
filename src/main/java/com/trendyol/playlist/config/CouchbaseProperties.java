@@ -1,4 +1,4 @@
-package com.trendyol.toyrobot.config;
+package com.trendyol.playlist.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.context.properties.EnableConfigurationProperties;

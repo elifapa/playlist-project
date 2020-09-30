@@ -1,4 +1,4 @@
-package com.trendyol.toyrobot.config;
+package com.trendyol.playlist.config;
 
 import com.couchbase.client.core.env.TimeoutConfig;
 import com.couchbase.client.java.Cluster;
@@ -17,11 +17,11 @@ import org.springframework.http.converter.json.Jackson2ObjectMapperBuilder;
 import java.time.Duration;
 
 @Configuration
-public class RoverCouchbaseConfiguration {
+public class PlaylistCouchbaseConfiguration {
 
     private final CouchbaseProperties couchbaseProperties;
 
-    public RoverCouchbaseConfiguration(CouchbaseProperties couchbaseProperties) {
+    public PlaylistCouchbaseConfiguration(CouchbaseProperties couchbaseProperties) {
         this.couchbaseProperties = couchbaseProperties;
     }
 
@@ -48,7 +48,7 @@ public class RoverCouchbaseConfiguration {
     }
 
     @Bean
-    public Collection roverCollection(Cluster couchbaseCluster) {
+    public Collection playlistCollection(Cluster couchbaseCluster) {
         couchbaseCluster.bucket(couchbaseProperties.getBucketName()).waitUntilReady(Duration.ofSeconds(122));
         return couchbaseCluster.bucket(couchbaseProperties.getBucketName()).defaultCollection();
     }

@@ -1,4 +1,4 @@
-package com.trendyol.toyrobot.config;
+package com.trendyol.playlist.config;
 
 import com.couchbase.client.java.Cluster;
 import org.springframework.context.annotation.Bean;
@@ -15,6 +15,8 @@ public class CouchbaseIndexConfiguration {
 
     @Bean
     public void createIndexes() {
-        couchbaseCluster.query("CREATE INDEX bootcampArray ON `rover`(DISTINCT ARRAY `m`.`name` FOR m in `material` END)");
+        couchbaseCluster.query("CREATE PRIMARY INDEX idx1 ON `playlist`");
+        couchbaseCluster.query("CREATE INDEX userId ON `playlist`(userId)");
+        couchbaseCluster.query("CREATE INDEX bootcampArray ON `playlist`(DISTINCT ARRAY `t`.`name` FOR t in `track` END)");
     }
 }
